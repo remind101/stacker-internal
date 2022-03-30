@@ -2,8 +2,6 @@
 import logging
 import warnings
 
-from past.builtins import basestring
-
 from ..exceptions import UnknownLookupType, FailedVariableLookup
 from ..util import load_object_from_string
 
@@ -32,7 +30,7 @@ def register_lookup_handler(lookup_type, handler_or_path):
 
     """
     handler = handler_or_path
-    if isinstance(handler_or_path, basestring):
+    if isinstance(handler_or_path, str):
         handler = load_object_from_string(handler_or_path)
     LOOKUP_HANDLERS[lookup_type] = handler
     if type(handler) != type:

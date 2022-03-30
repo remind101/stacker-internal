@@ -1,4 +1,3 @@
-from past.types import basestring
 import copy
 import sys
 import logging
@@ -154,7 +153,7 @@ def substitute_references(root, environment, exp, full_exp):
     # strings, so we have to spin our own.
     def isstr(s):
         try:
-            return isinstance(s, basestring)
+            return isinstance(s, str)
         except NameError:
             return isinstance(s, str)
 

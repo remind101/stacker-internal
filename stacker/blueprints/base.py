@@ -1,4 +1,3 @@
-from past.builtins import basestring
 import copy
 import hashlib
 import logging
@@ -53,7 +52,7 @@ class CFNParameter(object):
                 a CloudFormation Parameter.
 
         """
-        acceptable_types = [basestring, bool, list, int]
+        acceptable_types = [str, bool, list, int]
         acceptable = False
         for acceptable_type in acceptable_types:
             if isinstance(value, acceptable_type):

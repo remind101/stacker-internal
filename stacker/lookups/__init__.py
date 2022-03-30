@@ -1,4 +1,3 @@
-from past.builtins import basestring
 from collections import namedtuple
 import re
 
@@ -55,7 +54,7 @@ def extract_lookups(value):
 
     """
     lookups = set()
-    if isinstance(value, basestring):
+    if isinstance(value, str):
         lookups = lookups.union(extract_lookups_from_string(value))
     elif isinstance(value, list):
         for v in value:

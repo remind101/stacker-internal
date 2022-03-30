@@ -38,7 +38,7 @@ class BlueprintTestCase(unittest.TestCase):
             expected_dict = json.loads(fd.read())
             expected_text = json.dumps(expected_dict, indent=4, sort_keys=True)
 
-        self.assertEquals(rendered_dict, expected_dict,
+        self.assertEqual(rendered_dict, expected_dict,
                           diff(rendered_text, expected_text))
 
 
@@ -130,7 +130,7 @@ class YamlDirTestGenerator(object):
                                   environment={'environment': 'test'})
 
                 configvars = self.stack.variables or {}
-                variables = [Variable(k, v) for k, v in configvars.iteritems()]
+                variables = [Variable(k, v) for k, v in configvars.items()]
 
                 blueprint_class = load_object_from_string(
                     self.stack.class_path)

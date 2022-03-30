@@ -1,7 +1,6 @@
 
 import re
 
-from past.builtins import basestring
 from string import Template
 
 from .exceptions import InvalidLookupCombination, UnresolvedVariable, \
@@ -127,7 +126,7 @@ class VariableValue(object):
             return VariableValueList.parse(input_object)
         elif isinstance(input_object, dict):
             return VariableValueDict.parse(input_object)
-        elif not isinstance(input_object, basestring):
+        elif not isinstance(input_object, str):
             return VariableValueLiteral(input_object)
         # else:  # str
 
@@ -286,7 +285,7 @@ class VariableValueConcatenation(VariableValue, list):
         values = []
         for value in self:
             resolved_value = value.value()
-            if not isinstance(resolved_value, basestring):
+            if not isinstance(resolved_value, str):
                 raise InvalidLookupConcatenation(value, self)
             values.append(resolved_value)
         return ''.join(values)
@@ -355,7 +354,7 @@ class VariableValueLookup(VariableValue):
 
         self.lookup_name = lookup_name
 
-        if isinstance(lookup_data, basestring):
+        if isinstance(lookup_data, str):
             lookup_data = VariableValueLiteral(lookup_data)
         self.lookup_data = lookup_data
 

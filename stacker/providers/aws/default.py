@@ -678,9 +678,9 @@ class Provider(BaseProvider):
 
     @staticmethod
     def _tail_print(e):
-        print("%s %s %s" % (e['ResourceStatus'],
+        print(("%s %s %s" % (e['ResourceStatus'],
                             e['ResourceType'],
-                            e['EventId']))
+                            e['EventId'])))
 
     def get_events(self, stack_name, chronological=True):
         """Get the events in batches and return in chronological order"""

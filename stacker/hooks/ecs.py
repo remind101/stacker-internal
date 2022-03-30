@@ -1,7 +1,6 @@
 # A lot of this code exists to deal w/ the broken ECS connect_to_region
 # function, and will be removed once this pull request is accepted:
 #   https://github.com/boto/boto/pull/3143
-from past.builtins import basestring
 import logging
 
 from stacker.session_cache import get_session
@@ -31,7 +30,7 @@ def create_clusters(provider, context, **kwargs):
         logger.error("setup_clusters hook missing \"clusters\" argument")
         return False
 
-    if isinstance(clusters, basestring):
+    if isinstance(clusters, str):
         clusters = [clusters]
 
     cluster_info = {}

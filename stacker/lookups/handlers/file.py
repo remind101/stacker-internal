@@ -129,14 +129,14 @@ def _parameterize_string(raw):
 
     for match in _PARAMETER_PATTERN.finditer(raw):
         parts.append(raw[s_index:match.start()])
-        parts.append({u"Ref": match.group(1)})
+        parts.append({"Ref": match.group(1)})
         s_index = match.end()
 
     if not parts:
         return GenericHelperFn(raw)
 
     parts.append(raw[s_index:])
-    return GenericHelperFn({u"Fn::Join": [u"", parts]})
+    return GenericHelperFn({"Fn::Join": ["", parts]})
 
 
 def parameterized_codec(raw, b64):
