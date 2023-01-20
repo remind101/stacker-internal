@@ -281,7 +281,7 @@ def summarize_params_diff(params_diff):
     return summary
 
 
-def wait_till_change_set_complete(cfn_client, change_set_id, try_count=25,
+def wait_till_change_set_complete(cfn_client, change_set_id, try_count=150,
                                   sleep_time=.5, max_sleep=3):
     """ Checks state of a changeset, returning when it is in a complete state.
 
